@@ -2,11 +2,12 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    id("com.google.devtools.ksp")
 }
 
 android {
     namespace = "com.example.contacts"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.example.contacts"
@@ -56,4 +57,13 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+
+    // Room
+//    val roomVersion = "2.6.1"
+    implementation(libs.androidx.room.ktx)
+    ksp(libs.androidx.room.compiler)
+    /*
+        ksp - kotlin symbol processing used for room library to define or mark different classes. Eg. database table
+        Room processes these annotations for us
+     */
 }
